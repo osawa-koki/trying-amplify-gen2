@@ -25,6 +25,17 @@ jobs:
         run: npm run dev &
       - name: Wait for local server to be ready
         run: timeout 1m sh -c 'until curl -s http://localhost:3000 > /dev/null; do sleep 1; done'
+      - name: Create test-user
+        run: |
+          COGNITO_USER_POOL_ID=$(jq -r '.auth.user_pool_id' amplify_outputs.json)
+          aws cognito-idp admin-create-user \
+            --user-pool-id $COGNITO_USER_POOL_ID \
+            --username test@example.com
+          aws cognito-idp admin-set-user-password \
+            --user-pool-id $COGNITO_USER_POOL_ID \
+            --username test@example.com \
+            --password Passw0rd! \
+            --permanent
       - name: Run Playwright tests
         run: npx playwright test
       - name: Stop local server
