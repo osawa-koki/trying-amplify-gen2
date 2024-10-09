@@ -1,25 +1,36 @@
-## AWS Amplify Next.js (App Router) Starter Template
+# trying-amplify-gen2
 
-This repository provides a starter template for creating applications using Next.js (App Router) and AWS Amplify, emphasizing easy setup for authentication, API, and database capabilities.
+🗞🗞🗞 Amplify Gen2を試してみる！  
 
-## Overview
+<https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/>を参考に進めています。  
 
-This template equips you with a foundational Next.js application integrated with AWS Amplify, streamlined for scalability and performance. It is ideal for developers looking to jumpstart their project with pre-configured AWS services like Cognito, AppSync, and DynamoDB.
+## 本番環境へのデプロイ
 
-## Features
+最初に、このリポジトリをクローンします。  
 
-- **Authentication**: Setup with Amazon Cognito for secure user authentication.
-- **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
-- **Database**: Real-time database powered by Amazon DynamoDB.
+```shell
+git clone https://github.com/osawa-koki/trying-amplify-gen2.git
+```
 
-## Deploying to AWS
+次に、<https://console.aws.amazon.com/amplify/create/repo-branch>からAWSへのデプロイを設定します。  
+その後は、mainブランチへのpushをトリガーとしてデプロイが自動で行われます。  
 
-For detailed instructions on deploying your application, refer to the [deployment section](https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/#deploy-a-fullstack-app-to-aws) of our documentation.
+## ローカル環境での起動
 
-## Security
+最初にnpmモジュールをインストールします。  
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+```shell
+npm install
+```
 
-## License
+サンドボックス環境をローカルで起動します。  
 
-This library is licensed under the MIT-0 License. See the LICENSE file.
+```shell
+npx ampx sandbox
+```
+
+上記コマンドに並行して、Next.jsのローカルサーバーを起動します。  
+
+```shell
+npm run dev
+```
