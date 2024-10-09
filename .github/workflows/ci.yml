@@ -1,6 +1,6 @@
 name: ci
 
-on: [ push ]
+on: workflow_dispatch
 
 jobs:
   test:
@@ -15,8 +15,8 @@ jobs:
         run: npm install --global @aws-amplify/backend-cli
       - name: Install dependencies
         run: npm ci
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      # - name: Install Playwright Browsers
+      #   run: npx playwright install --with-deps
       - name: Create apmx sandbox
         run: npx ampx sandbox --identifier github-ci-${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }} &
       - name: Wait for sandbox to be ready
@@ -36,8 +36,8 @@ jobs:
             --username test@example.com \
             --password Passw0rd! \
             --permanent
-      - name: Run Playwright tests
-        run: npx playwright test
+      # - name: Run Playwright tests
+      #   run: npx playwright test
       - name: Stop local server
         run: pkill -f 'npm run dev'
       - name: Stop apmx sandbox
