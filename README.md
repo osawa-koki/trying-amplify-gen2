@@ -2,7 +2,11 @@
 
 🗞🗞🗞 Amplify Gen2を試してみる！  
 
+![成果物](./fruit.gif)  
+
 <https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/>を参考に進めています。  
+
+環境に固有な値がコードから完全に分離された(`./amplify_outputs.json`)ことや、ローカルのサンドボックス化された環境がGoodです！  
 
 ## 本番環境へのデプロイ
 
