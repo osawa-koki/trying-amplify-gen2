@@ -16,6 +16,7 @@ Amplify.configure(outputs);
 const client = generateClient<Schema>();
 
 export default function App() {
+  const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
   function listTodos() {
@@ -30,8 +31,9 @@ export default function App() {
 
   function createTodo() {
     client.models.Todo.create({
-      content: window.prompt("Todo content"),
+      content: todo,
     });
+    setTodo("");
   }
 
   function deleteTodo(id: string) {
@@ -43,7 +45,8 @@ export default function App() {
       {({ signOut, user }) => (
         <main>
           <h1>{user?.signInDetails?.loginId}'s todos</h1>
-          <button onClick={createTodo}>+ new</button>
+          <input type="text" name="todo-name" value={todo} style={{ margin: "8px 0" }} onChange={(e) => setTodo(e.target.value)} />
+          <button onClick={createTodo} disabled={todo === ""}>+ new</button>
           <ul>
             {todos.map((todo) => (
               <li key={todo.id} onClick={() => deleteTodo(todo.id)}>{todo.content}</li>
